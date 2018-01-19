@@ -2,6 +2,7 @@
 <html>
 
   <head>
+    <link rel="stylesheet" type=text/css href="style.css">
     <meta charset="UTF-8">
     <title>A01207543 - Dante Flores - LAB1</title>
   </head>
@@ -10,7 +11,7 @@
 
 
 
-    <header>
+    <header class="titulo">
       <h1>Laboratorio 1: Introducción</h1>
       <h2>Dante Flores - A01207543  -  A01207543@itesm.mx</h2>
     </header>
@@ -18,13 +19,14 @@
     <!--Barra de navegacion-->
     <hr>
     <nav>
-        <a href=#conceptos>Conceptos</a>                    <a>|</a>
-        <a href=#aboutme>Acerca de mi</a>                   <a>|</a>
-        <a href=#preguntas>Preguntas</a>                    <a>|</a>
-        <a href=#referencias>Referencias</a>                <a>|</a>
-        <a href=#investigacion>Investigación</a>            <a>|</a>
-        <a href=#formas>Formas</a>                          <a>|</a>
-
+      <ul class="navbar">
+        <li class="navelement"><a href=#conceptos>Conceptos</a>                    <a>|</a></li>
+        <li class="navelement"><a href=#aboutme>Acerca de mi</a>                   <a>|</a></li>
+        <li class="navelement"><a href=#preguntas>Preguntas</a>                    <a>|</a></li>
+        <li class="navelement"><a href=#referencias>Referencias</a>                <a>|</a></li>
+        <li class="navelement"><a href=#investigacion>Investigación</a>            <a>|</a></li>
+        <li class="navelement"><a href=#formas>Formas</a>                          <a>|</a></li>
+      </ul>
     </nav>
     <hr>
 
@@ -33,7 +35,7 @@
     <!--Conceptos-->
     <section><a name="conceptos"></a>
       <header>
-        <h2>Conceptos</h2>
+        <h2 class="secciones">Conceptos</h2>
       </header>
       <article>
         <strong>URL</strong>
@@ -79,12 +81,36 @@
       </article>
     </section>
 
+    <!--Preguntas lab3-->
+
+    <section>
+      <header>
+        <h2 class="secciones">Preguntas lab3</h2>
+      </header>
+
+      <strong>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? </strong>
+      <p>El important es una herramienta poderosa para ignorar lo que son las reglas de cascada. Considero que ésta se debe de usar únicamente cuando se considere necesario. Pues el diseño de cascada fue hecho
+          facilitar el diseño de la página.<a href=#referencias>[17]</a></p>
+
+        <strong>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</strong>
+        <p>Se debe de tener cuidado por la relación de aspecto, pues la imagen puede quedar o muy extendida o "apretada" y no sería estéticamente bueno para el usuario.</p>
+
+        <strong>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?</strong>
+        <p>Se debe tener en consideración si quieres que esos datos se mantengan estáticos, no importa en que pantalla quieres visualizar la página. Por ejemplo, si no quieres que se ajuste una tabla
+        sin importar desde que página se vea, es recomendable usar pixeles.</p>
+
+        <strong>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</strong>
+        <p>Para mejorar el rendimiento de la página, pues de ésta manera se reduce el espacio y se hace más fluido el sitio.</p>
+
+
+    </section>
+
 <br>
 <br>
 <!--Acerca de mi-->
     <section><a name="aboutme"></a>
       <header>
-        <h2>Acerca de mi</h2>
+        <h2 class="secciones">Acerca de mi</h2>
       </header>
       <article>
         <p>Hola, mi nombre es Dante Maximiliano Flores Moreno. Actualmente me encuentro estudiando en cuarto semestre de la
@@ -113,7 +139,7 @@
     <!--Preguntas-->
     <section><a name="preguntas"></a>
       <header>
-        <h2>Preguntas</h2>
+        <h2 class="secciones">Preguntas</h2>
       </header>
       <article>
         <ol>
@@ -182,7 +208,7 @@
   <!--Investigacion-->
     <section><a name="investigacion"></a>
       <header>
-        <h2>Investigación</h2>
+        <h2 class="secciones">Investigación</h2>
       </header>
       <article>
         <h3>Ciclo de vida de los sistemas de información</h3><a href=#referencias>[16]</a>
@@ -232,7 +258,7 @@
 <br>
     <section><a name="formas"></a>
       <header>
-        <h2>Formas</h2>
+        <h2 class="secciones">Formas</h2>
       </header>
       <article>
         <form>
@@ -279,7 +305,7 @@
         [14]<a href="https://www.w3schools.com/html/html_tables.asp">https://www.w3schools.com/html/html_tables.asp</a> <br>
         [15]<a href="https://miscursos.tec.mx/bbcswebdav/pid-8193681-dt-content-rid-27665457_1/courses/QRO.TC2026.2.1811.20480/lab2HtmlEjemplo.html">https://miscursos.tec.mx/bbcswebdav/pid-8193681-dt-content-rid-27665457_1/courses/QRO.TC2026.2.1811.20480/lab2HtmlEjemplo.html</a> <br>
         [16]<a href="https://www.ecured.cu/Ciclo_de_vida_de_los_sistemas_de_informaci%C3%B3n_y_conocimientos">https://www.ecured.cu/Ciclo_de_vida_de_los_sistemas_de_informaci%C3%B3n_y_conocimientos</a> <br>
-
+          [17]<a href="http://www.tufuncion.com/important">http://www.tufuncion.com/important</a> <br>
       </p>
     </section>
 
