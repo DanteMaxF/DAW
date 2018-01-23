@@ -124,7 +124,7 @@ function encriptar(){
   for (x in input){
     output += nextChar(input[x]);
   }
-  alert(output);
+  document.getElementById("salida1").innerHTML = output;
 }
 
 function desencriptar(){
@@ -134,5 +134,5 @@ function desencriptar(){
   for (x in input){
     output += prevChar(input[x]);
   }
-  alert(output);
+  document.getElementById("salida2").innerHTML = output;
 }
