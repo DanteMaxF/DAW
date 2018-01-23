@@ -1,3 +1,5 @@
+//JAVASCRIPT DANTE FLORES MORENO A01207543
+
 //Funciones para hacer un boton de refresh
 function buttonRefresh(){
   location.reload();
@@ -65,8 +67,10 @@ function contador(){
   homeButtonDisplay();
 }
 
-/*Se que no es el mejor algoritmo para crear una matriz aleatoria,
-pero es lo primero que se me vino a la mente*/
+/*
+* Se que no es el mejor algoritmo para crear una matriz aleatoria,
+* pero es lo primero que se me vino a la mente
+*/
 function promedios(){
   var matriz = [];
   var submatriz1 = [];
@@ -104,4 +108,31 @@ function inverso(){
   }
 
   homeButtonDisplay();
+}
+
+function nextChar(c) {
+    return String.fromCharCode(c.charCodeAt(0) + 1);
+}
+function prevChar(c) {
+    return String.fromCharCode(c.charCodeAt(0) - 1);
+}
+
+function encriptar(){
+  var input = document.getElementById("entrada1").value;
+  var output = [];
+  input = input.toUpperCase();
+  for (x in input){
+    output += nextChar(input[x]);
+  }
+  alert(output);
+}
+
+function desencriptar(){
+  var input = document.getElementById("entrada2").value;
+  var output = [];
+  input = input.toUpperCase();
+  for (x in input){
+    output += prevChar(input[x]);
+  }
+  alert(output);
 }
