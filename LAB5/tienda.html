@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type=text/css href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <title>A01207543 - Dante Flores - LAB1</title>
+  </head>
+
+  <header class="titulo">
+    <h1>Laboratorio 5</h1>
+    <h2>Dante Flores - A01207543  -  A01207543@itesm.mx</h2>
+  </header>
+
+
+  <body>
+
+
+    <!--Barra de navegacion-->
+
+    <nav>
+      <ul class="navbar">
+        <li class="navElement"><a href="index.html">Home</a>
+        <li class="navElement"><a href="validarPass.html">Validar password</a>             </li>
+        <li class="navElement"><a href="tienda.html">Tienda</a>                       </li>
+        <li class="navElement"><a href="email.html">Registrar email</a>              </li>
+
+      </ul>
+    </nav>
+    <h2>TIENDA<h2>
+
+        <table>
+          <!--Línea 1                 -->
+          <tr>
+            <!--Columna 1.1-->
+            <th>
+                <p>Dayan LunHui 3x3x3</p>
+                <p>Speed Cube</p>
+                <p>$257.00 MXN *</p>
+                <form>
+                    <label>Cantidad (máximo 5):
+                      <input type="number" min = "0" max="5" step="1" id="entradaDayan"/>
+                    </label>
+                  <button class="buttonP" onclick="calcDayan()">Comprar</button>
+                </form>
+                <img src="http://masquecubos.com/wp-content/uploads/2015/03/DaYan.IV_.LunHui.black2_.jpg">
+            </th>
+            <!--Columna 1.2-->
+            <th>
+              <p>YongJun Megaminx </p>
+              <p>Dodecahedron</p>
+              <p>$120.00 MXN *</p>
+              <form>
+                  <label>Cantidad (máximo 20):
+                    <input type="number" min = "0" max="20" step="1" id="entradaYong"/>
+                  </label>
+                <button class="buttonP" onclick="calcYongJun()">Comprar</button>
+              </form>
+              <img src="http://img.fasttechcdn.com/126/1269702/1269702-3.jpg">
+            </th>
+          </tr>
+          <!--Línea 2                -->
+          <tr>
+            <!--Columna 2.1-->
+            <th>
+              <p>YuXin 3x3x3 Mirror</p>
+              <p>Mirror variation</p>
+              <p>$140.00 MXN *</p>
+              <form>
+                  <label>Cantidad (máximo 50):
+                    <input type="number" min = "0" max="50" step="1" id="entradaYuxin"/>
+                  </label>
+                <button class="buttonP" onclick="calcYuxin()">Comprar</button>
+              </form>
+              <img src="http://img.fasttechcdn.com/110/1103408/1103408-1.jpg">
+            </th>
+
+          </tr>
+
+        </table>
+
+    <script type="text/javascript" src="scriptTienda.js"></script>
+  </body>
+
+  <hr>
+
+  <footer>
+    <p>Editor HTML: <a href="https://atom.io/">Atom</a></p>
+    <p>*Los precios publicados no incluyen IVA</p>
+  </footer>
+
+
+</html>

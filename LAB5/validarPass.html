@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type=text/css href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <title>A01207543 - Dante Flores - LAB1</title>
+  </head>
+
+  <header class="titulo">
+    <h1>Laboratorio 5</h1>
+    <h2>Dante Flores - A01207543  -  A01207543@itesm.mx</h2>
+  </header>
+
+  <body>
+
+    <!--Barra de navegacion-->
+
+    <nav>
+      <ul class="navbar">
+        <li class="navElement"><a href="index.html">Home</a>
+        <li class="navElement"><a href="validarPass.html">Validar password</a>             </li>
+        <li class="navElement"><a href="tienda.html">Tienda</a>                       </li>
+        <li class="navElement"><a href="email.html">Registrar email</a>              </li>
+
+      </ul>
+    </nav>
+
+    <!--Resto del body-->
+    <h2>VALIDAR PASSWORD<h2>
+
+    <button class="buttonP" id="myBtn">Presiona para validar</button>
+
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <p class="pBox">Validar contraseña</p>
+          <label>Ingrese contraseña:
+            <input type="password" id="entrada1">
+          </label>
+          <br>
+          <label>Confirmar contraseña:
+            <input type="password" id="entrada2">
+          </label>
+          <br>
+          <button onclick="verPass()" class="buttonP2">Verificar</button>
+
+      </div>
+    </div>
+
+</div>
+
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+
+  <hr>
+
+  <footer>
+    <p>Editor HTML: <a href="https://atom.io/">Atom</a></p>
+  </footer>
+
+
+</html>
