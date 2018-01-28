@@ -17,19 +17,48 @@
 
 
     <!--Barra de navegacion-->
-
     <nav>
       <ul class="navbar">
         <li class="navElement"><a href="index.html">Home</a>
-        <li class="navElement"><a href="validarPass.html">Validar password</a>             </li>
+        <li class="navElement"><a href="validarPass.html">Validar password</a>        </li>
         <li class="navElement"><a href="tienda.html">Tienda</a>                       </li>
-        <li class="navElement"><a href="email.html">Registrar email</a>              </li>
-
+        <li class="navElement"><a href="email.html">Registrar email</a>               </li>
+        <li class="navElement"><a href="preguntas.html">Preguntas</a>              </li>
       </ul>
     </nav>
 
     <h2>REGISTRAR EMAIL<h2>
 
+    <section>
+      <article>
+        <form>
+          <p>
+            <label>Nombre:
+                <input type="text" required/>
+            </label>
+            <label>Apellido paterno:
+                <input type="text" required/>
+            </label>
+          </p>
+          <p>
+            <label>Correo:
+                <input type="email" placeholder="nombre@dominio.com" required/>
+            </label>
+          </p>
+          <p>
+            <label>Edad:
+                <input type="number" name="quantity" min="18" required>
+            </label>
+          </p>
+          <p>
+              <input type="submit" value="Enviar" />
+              <input type="reset" value="Borrar" />
+          </p>
+
+        </form>
+      </article>
+
+    </section>
 
     <script type="text/javascript" src="script.js"></script>
   </body>
@@ -38,7 +67,6 @@
 
   <footer>
     <p>Editor HTML: <a href="https://atom.io/">Atom</a></p>
-  </footer>
-
+  </footer> 
 
 </html>
