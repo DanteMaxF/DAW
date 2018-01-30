@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type=text/css href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <title>A01207543 - Dante Flores - LAB1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body id="watermark">
+
+    <header>
+      <h1>Laboratorio - 6<h1>
+      <h1>Dante Flores Moreno - A01207543<h1>
+    </header>
+
+    <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="Ejercicios.html">Ejercicios</a>
+      <a href="juego.html">Juego :D</a>
+    </div>
+
+    <div class="contenido">
+      <h2>Cambio de estilos</h2>
+
+      <p>Texto a encriptar</p>
+      <div class="popup" onclick="anuncio()">
+        <input type="password" id="entrada1">
+        <span class="popuptext" id="myPopup">Inserte aqui el texto que desee encriptar</span>
+      </div>
+      <button onclick="encriptar()">Encriptar Texto</button>
+      <p id="texto1">
+        [________]
+      </p>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <p>Texto a desencriptar</p>
+      <div class="popup" onclick="anuncio2()">
+        <input type="text" id="entrada2">
+        <span class="popuptext" id="myPopup2">Inserte aqui el texto que desee desencriptar</span>
+      </div>
+      <button onclick="desencriptar()">Desencriptar Texto</button>
+      <p id="texto2">
+        [________]
+      </p>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <p>Para lo siguiente, arrastre la imagen dentro de cualquiera de los cuadros vacíos</p>
+
+      <div id="cuadro" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <img id="drag1" src="whoa.jpg" draggable="true" ondragstart="drag(event)" width="480" height="360">
+      <div id="cuadro" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    </div>
+
+
+
+
+
+    <script type="text/javascript" src="ejerciciosScript.js"></script>
+
+  </body>
+
+  <footer>
+      <p>Editor HTML: <a href="https://atom.io/">Atom</a></p>
+  </footer>
+
+</html>
