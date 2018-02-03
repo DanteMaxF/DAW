@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>A01207543 - Dante Flores - LAB1</title>
+    <link rel="stylesheet" type=text/css href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <h1>Dante Flores Moreno</h1>
+      <h1>Lab 7</h1>
+    </header>
+
+    <!--NAVBAR-->
+    <nav>
+      <div class="nav-wrapper grey darken-2">
+         <ul class="left">
+           <li><a href="index.html">Home</a></li>
+           <li><a href="aboutme.html">Acerca de mi</a></li>
+           <li class="active"><a href="juego.html">Juego</a></li>
+           <li><a href="preguntas.html">Preguntas</a></li>
+         </ul>
+       </div>
+    </nav>
+
+    <div class="contenido">
+      <div class="container">
+
+        <h2>JUEGO</h2>
+        <p>
+          Cuando me encontraba diseñando mi página web, quería añadir un botón. Pero mientras estaba colocando un
+          botón éste se volvió loco y empezó a moverse por todos lados de la página. Por más que revisé mi código
+          no encontré la explicación de éste. Por suerte pude encapsularlo y lo logré encapsular con otro botón, sólo
+          que éste no se quedará ahí para siempre. ¿Me ayudarías a atrapar al botón poseído dándole click?
+        </p>
+        <br>
+        <br>
+        <br>
+
+
+        <a class="btn tooltipped btn-floating pulse red darken-4" data-html="true" data-position="top" data-delay="0" data-tooltip="¡Libera al botón!" id="empezar"><i class="material-icons">priority_high</i></a>
+        <br>
+        <br>
+
+        <div id="hiddenButtons">
+          <a class="waves-effect waves-light btn" id="1" onclick="finalizar()">Aqui estoy :D</a><br><br>
+          <a class="waves-effect waves-light btn" id="2" onclick="finalizar()">Atrápame :p</a><br><br><br>
+          <a class="waves-effect waves-light btn" id="3" onclick="finalizar()">(^:</a><br><br><br><br>
+          <a class="waves-effect waves-light btn" id="4" onclick="finalizar()">xdxdxd</a><br><br><br><br><br>
+          <a class="waves-effect waves-light btn" id="5" onclick="finalizar()">Kuchow</a><br><br><br><br><br>
+          <a class="waves-effect waves-light btn" id="6" onclick="finalizar()">Pelas bruja</a><br><br><br><br><br>
+          <a class="waves-effect waves-light btn" id="7" onclick="finalizar()">JuasJuasJuas</a><br><br><br><br>
+        </div>
+
+        <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+
+
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="juegoScript.js"></script>
+
+  </body>
+
+  <footer>
+    <p>Editor HTML: <a href="https://atom.io/">Atom</a></p>
+    <p>Materialize. (n.d.). Materialize [Online]. Disponible en: <a href="http://materializecss.com/">http://materializecss.com/</a><p>
+
+  </footer>
+
+
+
+</html>
