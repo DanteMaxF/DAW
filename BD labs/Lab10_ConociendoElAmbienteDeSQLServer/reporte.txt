@@ -1,0 +1,28 @@
+Dante Maximiliano Flores Moreno
+A1207543
+LAB 10
+REPORTE
+
+sp_help Materiales
+¿Que muestra la instrucción?
+	Una tabla con la información de los atributos de la tabla.
+
+Script SQL
+Ejecuta las instrucciones que contiene el archivo crear.sql 
+¿Qué efecto tuvo esta acción?
+	Ejecutó todas las intrucciones de generar las tablas en un sólo "execute"
+¿Qué utilidad tiene esta manera de ejecutar los comandos de SQL?
+	Permite darle al sistema una serie de instrucciones directamente sin necesidad de que
+	entren de una en una.
+
+
+Carga masiva de datos
+¿Qué relación tienen con las tablas de la base de datos? (checa su contenido)
+	Son los datos que deberían de ir en las tablas de las bases de datos
+¿Qué relación tiene el contenido de este archivo (materiales.sql) con el formato en que se encuentran los datos en el archivo materiales.csv?
+	Los caracteres definidos en el script de SQL son los mismos que separan los datos en el archivo .csv
+	
+SELECT  * FROM Materiales
+
+¿Qué sucedió?
+	Se desplegaron todos los datos de la tabla.
