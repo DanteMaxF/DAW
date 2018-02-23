@@ -33,4 +33,28 @@ EJERCICIO 3
 	¿Qué significan las columnas de esas consultas?
 		Muestran las llaves foráneas y las referencias de dónde se están tomando
 
+EJERCICIO 4
+	¿Qué uso se le está dando a GETDATE()? 
+		Es una función que da la fecha y hora en que se está ejecutando la función
+	
+	¿Tiene sentido el valor del campo de cantidad?
+		No, no tendría sentido registrar una entrega donde no se entregó nada.
+	
+	¿Cómo responde el sistema? 
+		Msg 547, Level 16, State 0, Line 208
+		The INSERT statement conflicted with the CHECK constraint "Cantidad". The conflict occurred in database "a1207543", table "a1207543.Entregan", column 'Cantidad'.		
+	
+	¿Qué significa el mensaje? 
+		Que no se puede realizar el registro debido a que existe un constraint que prohibe registrar entregas con cantidades menores a 0
+ 
 
+INTEGRIDAD REFERENCIAL
+	
+	Cuando se habla del concepto de Integridad Referencial nos referimos al conjunto de reglas que existen en una base de datos para que las relaciones entre las tablas
+	no tengan conflictos, aseguruándose de que los registros en las tablas relacionadas sean válidos.
+	
+	Un elemento vital para la integridad referencial es la Clave Foránea, pues esta comprueba cada vez que se modifiquen datos que puedan alterarla y de esta manera, que no
+	existan discrepancias en la base de datos.
+
+Referencias
+Conceptos básicos de Integridad Referencial. (2000, July). Retrieved February 23, 2018, from http://www.aulaclic.es/sql/b_8_1_1.htm

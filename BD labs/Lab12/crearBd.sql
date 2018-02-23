@@ -204,4 +204,16 @@ REFERENCES Proyectos(Numero)
 -----------------------------------EJERCICIO 4-----------------------------------------------
 */
 
-INSERT INTO entregan values (1000, 'AAAA800101', 5000, GETDATE(), 0)
+--Agregar un registro con cantidad 0 a la tabla
+INSERT INTO Entregan 
+VALUES (1000, 'AAAA800101', 5000, GETDATE(), 0)
+
+--Borrar registros que tengan cantidad 0
+DELETE FROM Entregan
+WHERE Cantidad = 0
+
+--Agregar un constraint para que solo acepte registros con cantidades mayor a 0
+ALTER TABLE Entregan
+ADD CONSTRAINT Cantidad 
+CHECK(Cantidad > 0)
+
