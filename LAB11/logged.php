@@ -11,7 +11,18 @@
     <div class="contenido">
       <div class="container">
         <p>
-          <?php echo $_POST["nombre"]; ?>
+          <?php
+
+          if ($_POST["mail"]==$_POST["maillogin"] && $_POST["pass"]==$_POST["passlogin"] ) {
+
+              echo "<h2> FELICIDADES ".$_POST["nombre"]." ".$_POST["apellido"]."</h2>";
+              echo "Has logrado completar el registro e inicio de sesión :D";
+
+          }else{
+              echo "Oops! Al parecer insertaste mal tu correo o contraseña";
+          }
+
+          ?>
         </p>
       </div>
     </div>
