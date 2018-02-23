@@ -1,0 +1,36 @@
+LAB 12 REPORTE
+Dante Maximiliano Flores Moreno
+A01207543
+
+EJERCICIO 2
+	¿Qué ocurrió? 
+		No me dejó hacer el registro debido a que
+		no te deja insertar duplicados de llaves.
+
+	¿Qué información muestra esta consulta (sp_helpconstraint materiales)?
+		La descripción de los constraints de la tabla materiales.
+
+	¿Qué sentencias utilizaste para definir las llaves primarias?
+		-ALTER TABLE Proveedores ADD CONSTRAINT llaveProveedores PRIMARY KEY (RFC)
+		-ALTER TABLE Proyectos ADD CONSTRAINT llaveProyectos PRIMARY KEY (Numero)
+	
+	¿Qué sentencias utilizaste para definir este constrait?
+		ALTER TABLE Entregan ADD CONSTRAINT llaveEntregan PRIMARY KEY (Clave, RFC, Numero, Fecha)
+
+EJERCICIO 3
+	¿Qué particularidad observas en los valores para clave, rfc y numero? 
+		Que los datos pueden ser inválidos, pero aún así se registraron.
+
+	¿Cómo responde el sistema a la inserción de este registro? 
+		El sistema hace el registro de en la tabla de Entregan.
+
+	¿Qué significa el mensaje que emite el sistema? 
+		Que ocurrió un conflicto con la llave foránea y la llave primaria de la tabla Materiales
+		
+	¿Qué significado tiene la sentencia anterior? 
+		Sirve para unir distintas tablas con las llaves primarias y las llaves foráneas
+
+	¿Qué significan las columnas de esas consultas?
+		Muestran las llaves foráneas y las referencias de dónde se están tomando
+
+
