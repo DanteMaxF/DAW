@@ -1,0 +1,57 @@
+<div class="contenido">
+  <div class="container">
+    <div class="center-align">
+      
+      <br>
+      <br>
+      <a class="waves-effect waves-light btn modal-trigger red darken-4 pulse" href="#modalLogin">Iniciar sesión</a>
+
+    </div>
+
+    <!--Modal -->
+    <div id="modalLogin" class="modal">
+      <div class="modal-content">
+        <h4 class="center-align">Iniciar sesión</h4>
+
+        <div class="row">
+          <!--FORMA-->
+          <form class="col s12" action="login.php" method="POST">
+            <div class="row">
+              <div class="input-field col s6">
+                <input name="user" id="user" type="text" class="validate" required>
+                <label for="nombre">Usuario</label>
+              </div>
+
+              <div class="input-field col s6">
+                <input name="pass" id="pass" type="password" class="validate" required>
+                <label for="apellido">Contraseña</label>
+              </div>
+            </div>
+
+              <!--SUBMIT-->
+              <div class="col s6">
+                <button class="btn waves-effect waves-light grey darken-4" type="submit" name="action">Iniciar sesión
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+              <!--CERRAR-->
+              <div class="col s6">
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat red-text">Cerrar</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+    </div>
+  </div>
+</div>
