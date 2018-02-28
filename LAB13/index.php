@@ -1,14 +1,13 @@
-  <!--Header-->
-  <?php include("partials/header.html"); ?>
+<?php
+    session_start();
+    if(isset($_SESSION["user"]) ) {
+        header("location: login.php");
+    } else {
+        include("partials/header.html");
+        include("partials/navbar.html");
+        include("partials/loginForm.html");
+        include("partials/scripts.html");
+        include("partials/footer.html");
 
-  <!--NavBar-->
-  <?php include("partials/navbar.html"); ?>
-
-  <!--Modal para iniciar sesion-->
-  <?php include("partials/loginForm.html"); ?>
-
-  <!--Scripts-->
-  <?php include("partials/scripts.html"); ?>
-
-  <!--Scripts-->
-  <?php include("partials/footer.html"); ?>
+    }
+?>

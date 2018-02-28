@@ -1,21 +1,35 @@
 <?php
   session_start();
 
-
-  if($_POST["user"] == "Dante"){
-    $_SESSION["usuario"] = $_POST["user"];
-    $_SESSION["contrasena"] = $_POST["pass"];
-    
+  if(isset($_SESSION["user"])){
     //Header
     include("partials/header.html");
-
     //NavBar
     include("partials/navbar.html");
+    $user = $_SESSION["user"];
+    //Body
+    include("partials/container.html");
+    //footer
+    include("partials/footer.html");
 
-    echo "Hola ".$_SESSION["usuario"];
+  }
+  else if($_POST["user"] == "Dante" && $_POST["pass"] == "max"){
+    unset($_SESSION["error"]);
+    $_SESSION["user"] = $_POST["user"];
+    $user = $_SESSION["user"];
+
+    //Header
+    include("partials/header.html");
+    //NavBar
+    include("partials/navbar.html");
+    //Body
+    include("partials/container.html");
+    //Footer
+    include("partials/footer.html");
   }
   else{
-    echo "El usuario debe ser Dante";
+    $_SESSION["error"] = "Usuario y/o contraseña incorrectos";
+    header("location: index.php");
   }
 
 
