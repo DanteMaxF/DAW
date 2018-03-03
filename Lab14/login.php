@@ -8,9 +8,10 @@
         $user = $_SESSION["user"];
 
         include("partials/deudas.html");
+        include("partials/deudas_close.html");
 
         include("partials/footer.html");
-        
+
     }else if (login($_POST["user"], $_POST["password"]) ) {
         unset($_SESSION["error"]);
         $_SESSION["user"] = $_POST["user"];
@@ -19,6 +20,7 @@
         include("partials/navbar.html");
 
         include("partials/deudas.html");
+        include("partials/deudas_close.html");
 
         include("partials/footer.html");
     }else{

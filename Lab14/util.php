@@ -36,49 +36,34 @@ function login($user, $passwd) {
 }
 
 
-function getTabla() {
-      $db = connectDB();
-      if ($db != NULL) {
+//Tabla de alumnos
+function getAlumno(){
+  $conn = connectDB();
+  $sql = "SELECT * FROM alumnos";
+  $result = mysqli_query($conn, $sql);
+  disconnectDb($conn);
 
-          //Specification of the SQL query
-          $query='SELECT * FROM alumnos';
-          $query;
-           // Query execution; returns identifier of the result group
-          $results = $db->query($query);
-           // cycle to explode every line of the results
-
-         $html = '<table class="striped">';
-         $html .= '<thead>';
-         $html .= '<tr>';
-         $columnas = $results->fetch_fields();
-         for($i=0; $i<count($columnas); $i++) {
-              $html .= '<th>'.$columnas[$i]->name.'</th>';
-         }
-         $html .= '</tr>';
-         $html .= '</thead>';
-
-         $html .= '<tbody>';
-        /* while ($fila = mysqli_fetch_array($results, MYSQLI_BOTH)) {
-                                              // Options: MYSQLI_NUM to use only numeric indexes
-                                              // MYSQLI_ASSOC to use only name (string) indexes
-                                              // MYSQLI_BOTH, to use both
-                  $html .= '<tr>';
-                  for($i=0; $i<count($fila); $i++) {
-                      // use of numeric index
-                      $html .= '<td>'.$fila[$i].'</td>';
-
-                  }
-                  $html .= '</tr>';
-          }*/
-          $html .= '</tbody></table>';
-          // it releases the associated results
-          mysqli_free_result($results);
-          disconnectDB($db);
-          return $html;
-      }
-      $html .= "<p>huehuehue</p>";
-      return false;
+  if(mysqli_num_rows($result) > 0){
+    echo '<table class="striped responsive-table">';
+    echo '<thead><tr>';
+      echo '<th>Nombre</th>';
+      echo '<th>Carrera</th>';
+      echo '<th>Deuda</th>';
+    echo '</tr></head>';
+    echo '<tbody>';
+    while($row = mysqli_fetch_assoc($result)){
+      echo "<tr>";
+      echo "<td>" . $row["nombreA"] . "</td>";
+      echo "<td>" . $row["carreraA"] . "</td>";
+      echo "<td>$" . $row["deuda"] . "</td>";
+      echo "</tr>";
     }
+    echo '</tbody>';
+    echo "</table>";
+  }
+
+}
+
 
 
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2018 a las 04:19:45
+-- Tiempo de generación: 03-03-2018 a las 18:38:55
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -43,7 +43,8 @@ INSERT INTO `alumnos` (`idAlumno`, `nombreA`, `carreraA`, `deuda`) VALUES
 (1, 'Rodrigo', 'LCPF', 2500),
 (2, 'Paulo', 'ISC', 100000),
 (3, 'Gerardo', 'IIS', 800000),
-(4, 'Dante', 'ISC', -1000);
+(4, 'Dante', 'ISC', -1000),
+(5, 'Eugenio', 'ISC', 28350);
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
