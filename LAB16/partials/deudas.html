@@ -1,0 +1,21 @@
+<div class="contenido">
+  <div class="container">
+    <?php if (isset($_SESSION["registroA"]) != ""): ?>
+      <div class="card-panel">
+        <span class="black-text green-darken-2"><?=$_SESSION["registroA"] ?></span>
+      </div>
+    <?php unset($_SESSION["registroA"]); endif; ?>
+    <p>
+      Hola que tal <?=$user?>
+    </p>
+    <p>
+      Éstos son los estudiantes que deben dinero:
+    </p>
+    <p>
+      <?php echo getAlumno(); ?>
+    </p>
+    <br>
+    <div class="center-align">
+      <a class="btn-floating btn-large waves-effect waves-light red pulse" href="registrar_alumno.php"><i class="material-icons">add</i></a>
+    </div>
+    <br><br><br><br>
