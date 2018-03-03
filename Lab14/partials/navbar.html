@@ -1,0 +1,11 @@
+<!--NAVBAR-->
+<nav>
+  <div class="nav-wrapper grey darken-3">
+     <ul class="left">
+       <li><a href="index.php">Home</a></li>
+      <?php if(isset($_SESSION["user"])): ?>
+       <li><a href="logout.php">Salir</a></li>
+      <?php endif; ?>
+     </ul>
+   </div>
+</nav>
