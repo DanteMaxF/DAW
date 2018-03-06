@@ -1,0 +1,459 @@
+DANTE MAXIMILIANO FLORES MORENO		A01207543
+
+--Consulta de una tabla completa--
+SELECT * FROM Materiales
+
+Clave	Descripcion	Costo
+1000	Varilla 3/16	100.00
+1010	Varilla 4/32	115.00
+1020	Varilla 3/17	130.00
+
+
+
+--Seleccion
+SELECT * FROM Materiales WHERE clave=1000
+
+Clave	Descripcion	Costo
+1000	Varilla 3/16	100.00
+
+
+
+--Proyeccion
+SELECT Clave,RFC,Fecha FROM Entregan
+
+Clave	RFC		Fecha
+1000	AAAA800101   	1998-07-08 00:00:00.000
+1000	AAAA800101   	1999-08-08 00:00:00.000
+1000	AAAA800101   	2000-04-06 00:00:00.000
+
+
+
+--Reunion Natural
+SELECT * FROM Materiales,Entregan 
+WHERE Materiales.clave = Entregan.clave
+
+Clave	Descripcion	Costo	Clave	RFC		Numero	Fecha			Cantidad
+1000	Varilla 3/16	100.00	1000	AAAA800101   	5000	1998-07-08 00:00:00.000	165.00
+1000	Varilla 3/16	100.00	1000	AAAA800101   	5019	1999-08-08 00:00:00.000	254.00
+1000	Varilla 3/16	100.00	1000	AAAA800101   	5019	2000-04-06 00:00:00.000	7.00
+
+Si algún material no ha se ha entregado ¿Aparecería en el resultado de esta consulta?
+	No
+
+
+
+--Reunion con criterio especifico
+SELECT * FROM Entregan, Proyectos
+WHERE Entregan.numero <= Proyectos.numero
+
+Clave	RFC	Numero	Fecha	Cantidad	Numero	Denominacion
+1000	AAAA800101   	5000	1998-07-08 00:00:00.000	165.00	5000	Vamos Mexico
+1200	EEEE800101   	5000	2000-03-05 00:00:00.000	177.00	5000	Vamos Mexico
+1400	AAAA800101   	5000	2002-03-12 00:00:00.000	382.00	5000	Vamos Mexico
+
+
+
+----Union (se ilustra junto con seleccion)
+(SELECT * FROM Entregan WHERE Clave=1450)
+union
+(SELECT * FROM Entregan WHERE Clave=1300)
+
+Clave	RFC	Numero	Fecha	Cantidad
+1300	GGGG800101   	5005	2002-06-10 00:00:00.000	521.00
+1300	GGGG800101   	5005	2003-02-02 00:00:00.000	457.00
+1300	GGGG800101   	5010	2003-01-08 00:00:00.000	119.00
+
+¿Cuál sería una consulta que obtuviera el mismo resultado sin usar el operador Unión? Compruébalo. 
+	SELECT * FROM Entregan WHERE Clave=1450 OR Clave=1300
+
+
+
+--Interseccion (se ilustra junto con seleccion y proyeccion
+(select clave from entregan where numero=5001) 
+intersect 
+(select clave from entregan where numero=5018) 
+
+clave
+1010
+
+
+
+--Diferencia (se ilustra con selección ) 
+SELECT * FROM Entregan WHERE clave != 1000
+
+Clave	RFC	Numero	Fecha	Cantidad
+1010	BBBB800101   	5001	2000-05-03 00:00:00.000	528.00
+1010	BBBB800101   	5018	2000-11-10 00:00:00.000	667.00
+1010	BBBB800101   	5018	2002-03-29 00:00:00.000	523.00
+
+
+
+--Producto Cartesiano
+select * from entregan,materiales 
+
+Clave	RFC	Numero	Fecha	Cantidad	Clave	Descripcion	Costo
+1000	AAAA800101   	5000	1998-07-08 00:00:00.000	165.00	1000	Varilla 3/16	100.00
+1000	AAAA800101   	5019	1999-08-08 00:00:00.000	254.00	1000	Varilla 3/16	100.00
+1000	AAAA800101   	5019	2000-04-06 00:00:00.000	7.00	1000	Varilla 3/16	100.00
+
+¿Cómo está definido el número de tuplas de este resultado en términos del número de tuplas de entregan y de materiales? 
+	Es el numero de tuplas de entregan mas el numero de tuplas de materiales
+
+
+
+--Construcción de consultas a partir de una especificación 
+SET DATEFORMAT dmy
+SELECT Descripcion
+FROM Materiales M, Entregan E
+WHERE M.Clave = E.Clave 
+	AND Fecha BETWEEN '01/01/00' AND '31/12/00'
+
+Descripcion
+Varilla 3/16
+Varilla 4/32
+Varilla 4/32
+
+¿Por qué aparecen varias veces algunas descripciones de material? 
+	Porque se ha realizado mas de una entrega en ese año
+
+
+
+--Uso del calificador distinct
+SET DATEFORMAT dmy
+SELECT DISTINCT Descripcion
+FROM Materiales M, Entregan E
+WHERE M.Clave = E.Clave 
+	AND Fecha BETWEEN '01/01/00' AND '31/12/00'
+
+Descripcion
+Arena
+Block
+Cantera rosa
+
+¿Qué resultado obtienes en esta ocasión? 
+	Los materiales ordenados sin repeticion
+
+
+
+--Ordenamientos
+SELECT P.Numero, P.Denominacion, E.Fecha, E.Cantidad
+FROM Proyectos P, Entregan E
+WHERE P.Numero = E.Numero
+ORDER BY P.Numero ASC, E.Fecha DESC
+
+Numero	Denominacion	Fecha			Cantidad
+5001	Aztecón		2000-05-03 00:00:00.000	528.00
+5001	Aztecón		2000-02-05 00:00:00.000	601.00
+5001	Aztecón		1999-11-05 00:00:00.000	43.00
+5002	CIT Campeche	2003-02-01 00:00:00.000	24.00
+5002	CIT Campeche	2001-07-29 00:00:00.000	582.00
+5002	CIT Campeche	1998-04-07 00:00:00.000	603.00
+
+Obtén los números y denominaciones de los proyectos con las fechas y 
+cantidades de sus entregas, ordenadas por número de proyecto, 
+presentando las fechas de la más reciente a la más antigua. 
+	No se puede obtener dicha consulta, pues al ordenar por numero, las fechas
+	pueden resultar sin ordenacion
+
+
+
+--Operadores de cadena
+SELECT * FROM Materiales where Descripcion LIKE 'Si%'
+
+Clave	Descripcion	Costo
+1120	Sillar rosa	100.00
+1130	Sillar gris	110.00
+
+¿Qué resultado obtienes? 
+	Los materiales que empiezan con "si"
+¿Qué sucede si la consulta fuera : LIKE 'Si' ? 
+	Buscaria los materiales que tuvieran como descripcion un unico "si"
+	
+¿Qué resultado obtienes? 
+	Clave	Descripcion	Costo
+
+Explica a qué se debe este comportamiento. 
+	No existen en la base de datos un material que se llame "si"
+
+¿Qué resultado obtienes de ejecutar el siguiente código? 
+	¿Que resultado obtienes? ¿¿¿??? 
+¿Para qué sirve DECLARE? 
+	Para crear una variable y definir el tipo de dato
+¿Cuál es la función de @foo? 
+	Es una variable de 40 caracteres o menos
+¿Que realiza el operador SET? 
+	Le asigna un valor a la variable
+
+Ahora explica el comportamiento, función y resultado de cada una de las siguientes consultas: 
+
+SELECT RFC FROM Entregan WHERE RFC LIKE '[A-D]%'; 
+	El RFC de todos las Entregas que empiecen con A,B,C o D
+SELECT RFC FROM Entregan WHERE RFC LIKE '[^A]%'; 
+	El RFC de todas las Entregas que no empiecen con A
+SELECT Numero FROM Entregan WHERE Numero LIKE '___6'; 
+	El Numero de las entregas el cual el 4to caracter sea un 6
+
+
+
+--Operadores logicos
+SELECT Clave,RFC,Numero,Fecha,Cantidad 
+FROM Entregan 
+WHERE Numero Between 5000 and 5010; 
+
+Clave	RFC	Numero	Fecha	Cantidad
+1000	AAAA800101   	5000	1998-07-08 00:00:00.000	165.00
+1010	BBBB800101   	5001	2000-05-03 00:00:00.000	528.00
+1020	CCCC800101   	5002	2001-07-29 00:00:00.000	582.00
+60 rows
+
+¿Cómo filtrarías rangos de fechas? 
+	BETWEEN d1/m1/y1 AND d2/m2/y2
+
+SELECT RFC,Cantidad, Fecha,Numero 
+FROM [Entregan] 
+WHERE [Numero] Between 5000 and 5010 AND 
+Exists ( SELECT [RFC]
+FROM [Proveedores] 
+WHERE RazonSocial LIKE 'La%' and [Entregan].[RFC] = [Proveedores].[RFC] ) 
+
+RFC	Cantidad	Fecha	Numero
+AAAA800101   	165.00	1998-07-08 00:00:00.000	5000
+CCCC800101   	582.00	2001-07-29 00:00:00.000	5002
+AAAA800101   	86.00	1999-01-12 00:00:00.000	5008
+16 rows
+
+¿Qué hace la consulta? 
+	Muestra el RFC, Cantidad, Numero y Fecha de las entregas con un numero
+	entre 5000 y 5010, ademas de que exista un RFC de los proveedores cuyo
+	nombre empiece con La
+¿Qué función tiene el paréntesis ( ) después de EXISTS? 
+	Define una subconsulta
+
+Tomando de base la consulta anterior del EXISTS, realiza el query que devuelva el mismo resultado, pero usando el operador IN 
+	SELECT RFC,Cantidad, Fecha,Numero 
+	FROM [Entregan] 
+	WHERE [Numero] Between 5000 and 5010 AND 
+	RFC IN ( SELECT [RFC]
+	FROM [Proveedores] 
+	WHERE RazonSocial LIKE 'La%' and [Entregan].[RFC] = [Proveedores].[RFC] ) 
+	
+	RFC	Cantidad	Fecha	Numero
+	AAAA800101   	165.00	1998-07-08 00:00:00.000	5000
+	CCCC800101   	582.00	2001-07-29 00:00:00.000	5002
+	AAAA800101   	86.00	1999-01-12 00:00:00.000	5008
+	CCCC800101   	466.00	2000-08-06 00:00:00.000	5009
+	16 rows
+
+Tomando de base la consulta anterior del EXISTS, realiza el query que devuelva el mismo resultado, 
+pero usando el operador NOT IN
+	SELECT RFC,Cantidad, Fecha,Numero 
+	FROM [Entregan] 
+	WHERE [Numero] Between 5000 and 5010 AND 
+	RFC NOT IN ( SELECT [RFC]
+	FROM [Proveedores] 
+	WHERE RazonSocial NOT LIKE 'La%' and [Entregan].[RFC] = [Proveedores].[RFC] ) 
+	
+	RFC	Cantidad	Fecha	Numero
+	AAAA800101   	165.00	1998-07-08 00:00:00.000	5000
+	CCCC800101   	582.00	2001-07-29 00:00:00.000	5002
+	AAAA800101   	86.00	1999-01-12 00:00:00.000	5008
+	CCCC800101   	466.00	2000-08-06 00:00:00.000	5009
+	16 rows
+
+Realiza un ejemplo donde apliques algún operador : ALL, SOME o ANY 
+	SELECT cantidad 
+	FROM entregan
+	WHERE cantidad = ANY (
+				SELECT cantidad
+				FROM entregan
+				WHERE cantidad > 100)
+¿Qué hace la siguiente sentencia? Explica porque 
+	Muestra los primeros proyectos de la tabla según están acomodados
+SELECT TOP 2 * FROM Proyectos 
+Numero	Denominacion
+5000	Vamos Mexico
+5001	Aztecón
+2 rows
+
+¿Qué sucede con la siguiente consulta? Explica porque 
+SELECT TOP Numero FROM Proyectos 
+	Aparece un error de sintaxis porque TOP solo recibe Números enteros reales
+
+
+
+--Modificando la estructura de un tabla existente. 
+¿Qué consulta usarías para obtener el importe de las entregas es decir, 
+el total en dinero de lo entregado, basado en la cantidad de la entrega y 
+el precio del material y el impuesto asignado? 
+	SELECT Descripcion, SUM(e.cantidad)*costo*(1+porcentajeImpuesto/100) AS 'Total'
+	FROM entregan e, Materiales M
+	WHERE e.clave = m.clave
+	GROUP BY costo, porcentajeImpuesto, descripcion
+	
+	Descripcion	Total
+	Block	51754.080000
+	Tepetate	30895.174400
+	Ladrillos grises	39553.878000
+	44 rows
+
+------A continuación se te dan muchos enunciados de los cuales deberás generar su correspondiente consulta. 
+      
+--Los materiales (clave y descripción) entregados al proyecto "México sin ti no estamos completos". 
+SELECT	M.Clave, M.Descripcion
+FROM Materiales M, Proyectos P, Entregan E
+WHERE M.Clave = E.Clave AND P.Numero = E.Numero
+		AND Denominacion = 'Mexico sin ti no estamos completos'
+
+Clave	Descripcion
+1030	Varilla 4/33
+1230	Cemento 
+1430	Pintura B1022
+3 rows
+
+
+--Los materiales (clave y descripción) que han sido proporcionados por el proveedor "Acme tools". 
+SELECT M.Clave, M.Descripcion
+FROM Materiales M, Proveedores P, Entregan E
+WHERE M.Clave = E.Clave AND P.RFC = E.RFC
+		AND RazonSocial = 'Acme tools'
+
+0 rows
+
+
+
+--El RFC de los proveedores que durante el 2000 entregaron en promedio cuando menos 300 materiales. 
+SET DATEFORMAT dmy
+SELECT  RFC, SUM(E.Cantidad) as 'TOTAL'
+FROM Entregan E
+WHERE E.Fecha BETWEEN '1/1/2000' AND '31/12/2000'
+GROUP BY RFC
+HAVING SUM(E.Cantidad) >= 300
+
+RFC	TOTAL
+AAAA800101   	948.00
+BBBB800101   	1962.00
+CCCC800101   	744.00
+8 rows
+
+
+
+--El Total entregado por cada material en el año 2000. 
+SET DATEFORMAT dmy
+SELECT M.Descripcion, SUM(E.Cantidad) as 'TOTAL'
+FROM Materiales M, Entregan e
+WHERE E.Fecha BETWEEN '1/1/2000' AND '31/12/2000'
+GROUP BY M.Descripcion
+
+Descripcion	TOTAL
+Cantera rosa	10417.00
+Cemento 	10417.00
+Grava	10417.00
+42 rows
+
+
+
+--La Clave del material más vendido durante el 2001. (se recomienda usar una vista intermedia para su solución) 
+CREATE VIEW total2001
+AS
+SELECT SUM(Cantidad) as 'TOTAL'
+FROM Entregan
+WHERE Fecha BETWEEN '1/1/2001' AND '31/12/2001'
+GROUP BY Clave
+
+SELECT TOP 1 TOTAL FROM total2001
+
+TOTAL
+1060.00
+1 row
+
+--Productos que contienen el patrón 'ub' en su nombre. 
+SELECT Descripcion
+FROM Materiales
+WHERE Descripcion LIKE '%ub%'
+
+Descripcion
+Recubrimiento P1001
+Recubrimiento P1010
+Recubrimiento P1019
+12 rows
+
+
+
+--Denominación y suma del total a pagar para todos los proyectos. 
+SELECT Denominacion, SUM(E.Cantidad*M.Costo*(1+porcentajeImpuesto/100)) as 'Total a pagar'
+FROM Materiales M, Proyectos P, Entregan E
+WHERE M.Clave = E.Clave AND P.Numero = E.Numero
+GROUP BY Denominacion
+
+Denominacion	Total a pagar
+Ampliación de la carretera a la huasteca	742461.1940000000
+Aztecón	150200.2190000000
+CIT Campeche	161603.0820000000
+20 rows
+
+
+
+--Denominación, RFC y RazonSocial de los proveedores que se suministran materiales 
+  al proyecto Televisa en acción, que no se encuentran apoyando al proyecto Educando 
+  en Coahuila. (Solo usando vistas) 
+CREATE VIEW ProveedoresTelevisa (denominacion, rfc, razonsocial) AS
+	(SELECT DISTINCT pr.denominacion, p.rfc, p.RazonSocial
+	FROM proveedores p, proyectos pr, entregan e
+	WHERE p.rfc = e.rfc AND pr.numero = e.numero AND pr.denominacion LIKE 'Televisa en acción')
+
+CREATE VIEW ProveedoresCoahuila (denominacion, rfc, razonsocial) AS
+	(SELECT DISTINCT pr.denominacion, p.rfc, p.RazonSocial
+	FROM proveedores p, proyectos pr, entregan e
+	WHERE p.rfc = e.rfc AND pr.numero = e.numero AND pr.denominacion LIKE 'Educando en Coahuila')
+
+CREATE VIEW diferenciaProveedores AS
+	(SELECT razonsocial FROM ProveedoresTelevisa
+	except
+	SELECT razonsocial FROM ProveedoresCoahuila)
+
+SELECT * FROM ProveedoresTelevisa WHERE razonsocial IN (SELECT * FROM diferenciaProveedores)
+
+
+denominacion	rfc	razonsocial
+Televisa en acción	CCCC800101   	La Ferre
+Televisa en acción	DDDD800101   	Cecoferre
+2 rows
+
+
+
+--Denominación, RFC y RazonSocial de los proveedores que se suministran materiales 
+  al proyecto Televisa en acción que no se encuentran apoyando al proyecto Educando 
+  en Coahuila. (Sin usar vistas, utiliza not in, in o exists) 
+
+SELECT DISTINCT p.denominacion, pr.rfc, pr.razonsocial  
+FROM entregan e, proyectos p, proveedores pr
+WHERE e.rfc = pr.rfc AND p.numero = e.numero AND p.denominacion LIKE 'Televisa en acción' and pr.rfc
+NOT IN
+(SELECT e.rfc 
+FROM entregan e, proyectos p
+WHERE p.numero = e.numero AND p.denominacion LIKE 'Educando en Coahuila')
+
+denominacion	rfc	razonsocial
+Televisa en acción	CCCC800101   	La Ferre
+Televisa en acción	DDDD800101   	Cecoferre
+2 rows
+
+
+--Costo de los materiales y los Materiales que son entregados al proyecto Televisa 
+  en acción cuyos proveedores también suministran materiales al proyecto Educando en Coahuila.
+
+SELECT m.Costo, m.Descripcion
+FROM Entregan e, proyectos p, Proveedores pr, materiales m
+WHERE p.numero=e.numero and pr.RFC=e.RFC and m.Clave = e.clave
+	AND p.Denominacion LIKE 'Televisa%'  
+	AND pr.RFC  in (
+			SELECT pr.RFC
+			FROM Entregan e, Proyectos p, Proveedores pr, Materiales m
+			WHERE p.numero=e.numero AND pr.RFC=e.RFC AND m.Clave = e.clave 
+				AND p.Denominacion LIKE '%coahuila%')
+
+Costo	Descripcion
+50.00	Ladrillos rojos
+34.00	Tepetate
+2 rows
+
