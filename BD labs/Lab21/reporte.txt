@@ -1,0 +1,28 @@
+¿Qué hace el primer bloque del código (bloque del IF)? 
+	Verifica si ya existe un un "stored procedure" en la base de datos, si
+	existe, lo borra.
+¿Para qué sirve la instrucción GO? 
+	Es un set de instrucciones, podría decirse que es el equivalente a un corchete
+	en otro lenguaje de programación
+¿Explica que recibe como parámetro este Procedimiento y qué tabla modifica?
+	Recibe una clave numerica, un string de descripción, un numero que sería el costo,
+	y un decima que es el porcentaje de impuesto.
+	La tabla que modificaría sería la de Materiales, haría un registro.
+
+EXECUTE queryMaterial 'Lad',20 
+
+Explica en tu reporte qué recibe como parámetro este Procedimiento y qué hace
+	Recibe como parámetro un patrón de la descripción de un material y un costo.
+	El procedimiento devuelve una consulta de los materiales que tengan el patrón
+	ingresado y un costo mayor al ingresado.
+
+¿Qué ventajas tienen el utilizar Store Procedures en una aplicación cliente-servidor? 
+
+¿Qué ventajas tiene utilizar SP en un proyecto?
+	Ayuda a tener más organizado el código, ya que en lugar de escribir todo el query
+	en el controlador, sólo llama la función almacenada en la base de datos. De ésta manera
+	se separan mejor las áreas de desarrollo web con la de bases de datos.
+
+
+
+
