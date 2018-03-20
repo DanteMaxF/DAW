@@ -17,6 +17,7 @@ Explica en tu reporte qué recibe como parámetro este Procedimiento y qué hace
 	ingresado y un costo mayor al ingresado.
 
 ¿Qué ventajas tienen el utilizar Store Procedures en una aplicación cliente-servidor? 
+	Tienes el código más modulado y el proyecto puede ser más legible	
 
 ¿Qué ventajas tiene utilizar SP en un proyecto?
 	Ayuda a tener más organizado el código, ya que en lugar de escribir todo el query

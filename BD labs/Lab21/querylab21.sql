@@ -168,12 +168,40 @@ IF EXISTS (SELECT name FROM sysobjects WHERE name = 'modificarEntrega' AND type 
 				WHERE Clave=@uclave AND RFC=@uRFC AND Numero=@unumero AND Fecha=@ufecha
 			GO
 
+-- Crear procedimiento 'eliminarEntrega'
+IF EXISTS (SELECT name FROM sysobjects WHERE name = 'eliminarEntrega' AND type = 'P')
+                DROP PROCEDURE eliminarEntrega
+            GO
+            
+            CREATE PROCEDURE eliminarEntrega
+                @uclave NUMERIC(5,0),
+				@uRFC CHAR(13),
+				@unumero NUMERIC(5,0),
+				@ufecha DATETIME
+            AS
+                DELETE FROM Entregan WHERE Clave=@uclave AND RFC=@uRFC AND Numero=@unumero AND Fecha=@ufecha
+		    GO
+
 -- Test de los procedimientos --
 SELECT * FROM Materiales
 
 EXECUTE modificarMaterial 1514,'Arcilla de la chida',130,15
 
 EXECUTE eliminarMaterial 5000
+--
+SELECT * FROM Proyectos
+EXECUTE crearProyecto 5050,'Proyecto de Prueba'
+EXECUTE crearProyecto 5052,'Proyecto de Prueba 2'
+EXECUTE modificarProyecto 5050,'Proyecto de prueba editado'
+EXECUTE eliminarProyecto 5050
+--
+SELECT * FROM Proveedores
+EXECUTE crearProveedor 'HHHH8001111','Proveedor de prueba 2'
+EXECUTE modificarProyecto 'HHHH8001111','Proveedor de prueba 2 editado'
+EXECUTE eliminarProveedor 'HHHH8001111'
+--
+
+
 
 
 
