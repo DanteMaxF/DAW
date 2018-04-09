@@ -1,0 +1,30 @@
+/*
+*	LABORATORIO 23: Manipulación de datos usando Transacciones en SQL Server
+*	Dante Maximiliano Flores Moreno
+*	A01207543
+*/
+
+¿Que pasa cuando deseas realizar esta consulta? 
+	Me aparecen todos los datos de la tabla Clientes_Banca
+
+¿Qué pasa cuando deseas realizar esta consulta? 
+	En usuario2 se queda diciendo "executing query..." mientras
+	que en usuario1 se ejecuta el query sin problemas con los cambios.
+
+Explica por qué ocurre dicho evento. 
+	Esto ocurre debido a que la transaccion se encuentra en plena ejecucion
+	pero no tiene una llamada commit que la detenga
+
+¿Qué ocurrió y por qué? 
+	Se borraron los cambios de la transaccion, pues el ROLLBACK borró los cambios
+	de la transacción en curso
+
+¿Para qué sirve el comando @@ERROR revisa la ayuda en línea? 
+	Para capturar los errores y en lugar de que te despliegue el texto rojo del error,
+	desplegar un texto personalizado que te diga porque sucedio el error
+
+¿Explica qué hace la transacción? 
+	Intenta realizar registros de usuarios en clientes_banca
+
+¿Hubo alguna modificación en la tabla? Explica qué pasó y por qué.
+	No, debido a que se realizó un rollback que detuvo la transacción 
